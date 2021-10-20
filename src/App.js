@@ -8,9 +8,10 @@ class NameForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {value: '0',
-  value2: '0', answer: 0, iter: 0, list: []};
+  value2: '0', sing: '+', answer: 0, iter: 0, list: []};
     this.handleChange1 = this.handleChange1.bind(this);
     this.handleChange2 = this.handleChange2.bind(this);
+    this.handleChange3 = this.handleChange3.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange1(event) {
@@ -19,11 +20,27 @@ class NameForm extends React.Component {
   handleChange2(event) {
     this.setState({value2: event.target.value});
   }
+  handleChange3(event) {
+    this.setState({sing: event.target.value});
+  }
   renderHist(){
-    this.state.list.push(<div align="center">{this.state.value + ' + ' + this.state.value2 + ' = ' + this.state.answer}</div>);
+    this.state.list.push(<div align="center">{this.state.value + ' ' + this.state.sing + ' ' + this.state.value2 + ' = ' + this.state.answer}</div>);
   }
   handleSubmit(event) {
-    this.state.answer = Number(this.state.value) + Number(this.state.value2);
+    switch (this.state.sing){
+      case '+':
+        this.state.answer = Number(this.state.value) + Number(this.state.value2);
+        break;
+      case '-':
+        this.state.answer = Number(this.state.value) - Number(this.state.value2);
+        break;
+      case '/':
+          this.state.answer = Number(this.state.value) / Number(this.state.value2);
+          break;
+      default:
+          this.state.answer = 'Error';
+          break;
+    }
     console.log(this.state.answer);
     event.preventDefault();
     this.renderHist();
@@ -36,11 +53,11 @@ class NameForm extends React.Component {
       <form onSubmit={this.handleSubmit}>
         <div align="center" class="inputNum">
         <label>
-          <input type="text" value={this.state.value} onChange={this.handleChange1} />
+          <input size="5" type="text" value={this.state.value} onChange={this.handleChange1} />
         </label>
+        <label><input size="1" type="text" value={this.state.sing} onChange={this.handleChange3}/></label>
         <label>
-          +
-          <input type="text" value={this.state.value2} onChange={this.handleChange2} />
+          <input size="5" type="text" value={this.state.value2} onChange={this.handleChange2} />
         </label> = {this.state.answer}</div>
         <br></br>
         <br></br><div align="center">
