@@ -16,6 +16,23 @@
   transition: 0.5s;
   box-shadow: 10px 10px #3d7888;
 }
+
+.History{
+  position:relative;
+  background-color: rgb(111, 141, 223);
+  padding: 20px;;
+  border-radius: 5px;
+  margin:auto;
+  margin-top:20px;
+  text-align: center;
+  width: 50%;
+  font-size: 20px;
+  box-shadow: 5px 5px #2d5864;
+}
+.History:hover{
+  transition: 0.5s;
+  box-shadow: 10px 10px #23434d;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;

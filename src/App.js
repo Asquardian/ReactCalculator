@@ -27,6 +27,7 @@ class NameForm extends React.Component {
     this.state.list.push(<div align="center">{this.state.value + ' ' + this.state.sing + ' ' + this.state.value2 + ' = ' + this.state.answer}</div>);
   }
   handleSubmit(event) {
+    let element = document.getElementById("hist");
     switch (this.state.sing){
       case '+':
         this.state.answer = Number(this.state.value) + Number(this.state.value2);
@@ -42,6 +43,12 @@ class NameForm extends React.Component {
           break;
     }
     console.log(this.state.answer);
+    if(this.state.answer === 'Error'){
+      element.style.backgroundColor = '#e22f2f'
+    }
+    else{
+      element.style.backgroundColor = '#6f8ddf'
+    }
     event.preventDefault();
     this.renderHist();
     ReactDOM.render(<NameForm />, document.getElementById('root'));
@@ -61,8 +68,8 @@ class NameForm extends React.Component {
         </label> = {this.state.answer}</div>
         <br></br>
         <br></br><div align="center">
-        <input type="submit" value="Посчитать" id="bu"/></div>
-        <Bounce left><br /><h1 align="center">История</h1><br />{this.state.list}</Bounce>
+        <input type="submit" value="Посчитать"/></div>
+        <div class="History" id="hist"><Bounce left><h1 align="center">История</h1><br />{this.state.list}</Bounce></div><br />
       </form>
       </div>
     );
