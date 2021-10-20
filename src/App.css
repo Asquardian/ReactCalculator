@@ -1,7 +1,21 @@
 .App {
   text-align: center;
 }
-
+.Name{
+  position:relative;
+  background-color: rgb(165, 186, 245);
+  padding: 20px;;
+  border-radius: 5px;
+  margin:auto;
+  text-align: center;
+  width: 30%;
+  font-size: 20px;
+  box-shadow: 5px 5px #3d7888;
+}
+.Name:hover{
+  transition: 0.5s;
+  box-shadow: 10px 10px #3d7888;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
